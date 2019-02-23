@@ -15,7 +15,7 @@ object SocketWindowWordCount {
     val env: StreamExecutionEnvironment = StreamExecutionEnvironment.getExecutionEnvironment
 
     // get input data by connecting to the socket
-    val text: DataStream[String] = env.socketTextStream("localhost", 9000, '\n')
+    val text: DataStream[String] = env.socketTextStream("localhost", 9999, '\n')
 
     // parse the data, group it, window it, and aggregate the counts
     val windowCounts = text
@@ -23,7 +23,7 @@ object SocketWindowWordCount {
       .map { w => WordWithCount(w, 1) }
       .keyBy("word")
       .timeWindow(Time.seconds(2))
-      .sum("count")
+      .sum("count").setParallelism(2)
 
     // print the results with a single thread, rather than in parallel
     windowCounts.print().setParallelism(1)

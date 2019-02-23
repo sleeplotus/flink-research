@@ -4,7 +4,7 @@
     <groupId>com.tiger</groupId>
     <artifactId>flink-research</artifactId>
     <version>1.0</version>
-    <inceptionYear>2008</inceptionYear>
+    <inceptionYear>2018</inceptionYear>
     <properties>
         <scala.version>2.12.8</scala.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -44,6 +44,16 @@
             <artifactId>specs</artifactId>
             <version>1.2.5</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.5</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>1.7.5</version>
         </dependency>
         <dependency>
             <groupId>org.apache.flink</groupId>
