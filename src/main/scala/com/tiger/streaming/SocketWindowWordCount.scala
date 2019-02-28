@@ -23,10 +23,10 @@ object SocketWindowWordCount {
       .map { w => WordWithCount(w, 1) }
       .keyBy("word")
       .timeWindow(Time.seconds(2))
-      .sum("count").setParallelism(2)
+      .sum("count")
 
     // print the results with a single thread, rather than in parallel
-    windowCounts.print().setParallelism(1)
+    windowCounts.print()
 
     env.execute("Socket Window WordCount")
   }
