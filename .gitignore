@@ -9,3 +9,4 @@ gen
 target
 .mvn
 mvnw*
+/src/main/scala/META-INF/
