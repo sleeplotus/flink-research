@@ -27,7 +27,7 @@ object WordCount {
     //      .groupBy(0)
     //      .sum(1).setParallelism(8)
     val counts = text.flatMap(words => words.split("\\W+").filter(word => word.nonEmpty))
-      .map(word => (word, 1)).groupBy("_1").sum("_2").setParallelism(8)
+      .map(word => (word, 1)).groupBy("_1").sum("_2")
 
     counts.print()
   }
