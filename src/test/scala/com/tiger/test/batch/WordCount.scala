@@ -1,4 +1,4 @@
-package com.tiger.batch
+package com.tiger.test.batch
 
 import org.apache.flink.api.scala._
 

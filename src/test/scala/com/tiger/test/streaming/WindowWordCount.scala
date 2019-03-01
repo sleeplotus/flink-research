@@ -1,4 +1,4 @@
-package com.tiger.streaming
+package com.tiger.test.streaming
 
 import org.apache.flink.streaming.api.scala._
 import org.apache.flink.streaming.api.windowing.time.Time
