@@ -1,14 +1,17 @@
 package com.tiger.test.batch
 
 import org.apache.flink.api.scala._
+import org.junit.Test
 
 /**
   * @author 王澎
   * @date 2/23/2019
   * @company VRV
   */
-object WordCount {
-  def main(args: Array[String]) {
+class WordCountTests {
+
+  @Test
+  def wordCount(): Unit = {
 
     val env = ExecutionEnvironment.getExecutionEnvironment
 

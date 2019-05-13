@@ -2,15 +2,17 @@ package com.tiger.test.streaming
 
 import org.apache.flink.streaming.api.scala._
 import org.apache.flink.streaming.api.windowing.time.Time
+import org.junit.Test
 
 /**
   * @author 王澎
   * @date 2/23/2019
   * @company VRV
   */
-object SocketWindowWordCount {
+class SocketWindowWordCount {
 
-  def main(args: Array[String]): Unit = {
+  @Test
+  def socketWindowWordCount(): Unit = {
     // get the execution environment
     val env: StreamExecutionEnvironment = StreamExecutionEnvironment.getExecutionEnvironment
 
