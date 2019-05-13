@@ -9,7 +9,7 @@ import org.junit.Test
   * @date 2/23/2019
   * @company VRV
   */
-class SocketWindowWordCount {
+class SocketWindowWordCountTests {
 
   @Test
   def socketWindowWordCount(): Unit = {
