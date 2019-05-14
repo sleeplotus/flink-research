@@ -1,4 +1,4 @@
-package com.tiger.test.streaming.audit
+package com.tiger.test.streaming.log.audit
 
 import org.apache.flink.streaming.api.scala.StreamExecutionEnvironment
 import org.junit.Test
