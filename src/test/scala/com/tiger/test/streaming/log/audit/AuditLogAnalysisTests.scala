@@ -1,6 +1,5 @@
 package com.tiger.test.streaming.log.audit
 
-import org.apache.flink.streaming.api.scala.StreamExecutionEnvironment
 import org.junit.Test
 
 /**
@@ -11,8 +10,6 @@ class AuditLogAnalysisTests {
 
   @Test
   def auditLogAnalysis(): Unit = {
-    // Gets the execution environment.
-    val env: StreamExecutionEnvironment = StreamExecutionEnvironment.getExecutionEnvironment
 
   }
 
