@@ -24,7 +24,7 @@ class AuditLogAnalysisBatchTests {
     val result = csvInput.filter(line => line.value.nonEmpty).distinct().sortPartition(0,
       Order.ASCENDING).map(line => line.value)
     // Sink
-    result.writeAsText("out/log/audit/api", FileSystem.WriteMode.OVERWRITE).setParallelism(1)
+    result.writeAsText("out/log/audit/batch/api", FileSystem.WriteMode.OVERWRITE).setParallelism(1)
     result.print()
   }
 
@@ -34,7 +34,7 @@ class AuditLogAnalysisBatchTests {
     val env = ExecutionEnvironment.getExecutionEnvironment
     // Source
     val csvInput = env.readTextFile(
-      "file:///MyRepository/T3出行/ELK/log analysis/audit log/raw_audit_log_t3_ts_elk_20190511.csv")
+      "file:///MyRepository/T3出行/ELK/log analysis/audit log")
     // Transformation
     val result = csvInput.map(line => {
       val regex = "[\"]{3}.*[\"]{3}".r
@@ -44,7 +44,7 @@ class AuditLogAnalysisBatchTests {
       }
     }).filter(line => line.nonEmpty).distinct()
     // Sink
-    result.writeAsText("out/log/audit/parameters", FileSystem.WriteMode.OVERWRITE).setParallelism(1)
+    result.writeAsText("out/log/audit/batch/parameters", FileSystem.WriteMode.OVERWRITE).setParallelism(1)
     result.print()
   }
 
