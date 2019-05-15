@@ -40,7 +40,8 @@ class AuditLogAnalysisTests {
         new JSONKeyValueDeserializationSchema(true),
         properties))
 
-    val result = kafkaStream.map(line => line.get("request_parameters"))
+    val result = kafkaStream.map(
+      line => (line.get("value").get("user_id"), line.get("value").get("url"), line.get("value").get("log_time")))
     // Sink
     result.writeAsText("out/log/audit/streaming/parameters", FileSystem.WriteMode.OVERWRITE).setParallelism(1)
     result.print().setParallelism(1)
