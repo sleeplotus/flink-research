@@ -14,21 +14,26 @@ class HBasePhoenixTest {
 
   @Test
   def phoenixCreateTable(): Unit = {
+    var phoenix: PhoenixConnectionPool = null
+    var conn: Connection = null
+    var ps: PreparedStatement = null
     try {
+      // Phoenix connection pool.
       Class.forName("org.apache.phoenix.jdbc.PhoenixDriver")
-      val phoenix: PhoenixConnectionPool = new PhoenixConnectionPool(JDBC_URL)
-
-      val conn: Connection = phoenix.getConnection
-      val ps: PreparedStatement = conn.prepareStatement(
+      phoenix = new PhoenixConnectionPool(JDBC_URL)
+      // Gets connection from phoenix connection pool.
+      conn = phoenix.getConnection
+      // Creates PreparedStatement.
+      ps = conn.prepareStatement(
         "CREATE TABLE IF NOT EXISTS audit_log_2019_05 (id VARCHAR(255) not null PRIMARY KEY)")
       ps.execute()
       conn.commit()
-
+    } catch {
+      case e: Exception => System.out.println(e)
+    } finally {
       if (ps != null) ps.close()
       if (conn != null) conn.close()
       if (phoenix != null) phoenix.close()
-    } catch {
-      case e: Exception => System.out.println(e)
     }
   }
 
