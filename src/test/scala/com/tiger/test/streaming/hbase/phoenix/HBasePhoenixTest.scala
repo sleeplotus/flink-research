@@ -11,7 +11,7 @@ import org.junit.Test
 class HBasePhoenixTest {
 
   @Test
-  def phoenix(): Unit = {
+  def phoenixCreateTable(): Unit = {
     try {
       Class.forName("org.apache.phoenix.jdbc.PhoenixDriver")
       val phoenix: PhoenixConnectionPool = new PhoenixConnectionPool(
