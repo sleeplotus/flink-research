@@ -19,7 +19,7 @@ class HBasePhoenixTest {
 
       val conn: Connection = phoenix.getConnection
       val ps: PreparedStatement = conn.prepareStatement(
-        "CREATE TABLE IF NOT EXISTS audit_log_2019_05 (id VARCHAR(255) CONSTRAINT audit_pk PRIMARY KEY )")
+        "CREATE TABLE IF NOT EXISTS audit_log_2019_05 (id VARCHAR(255) not null PRIMARY KEY)")
       ps.execute()
       conn.commit()
 
