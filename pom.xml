@@ -6,7 +6,7 @@
     <version>1.0</version>
     <inceptionYear>2018</inceptionYear>
     <properties>
-        <flink.version>1.8.0</flink.version>
+        <flink.version>1.7.2</flink.version>
         <scala.version>2.12.8</scala.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <target.jvm>1.8</target.jvm>
@@ -65,13 +65,11 @@
             <groupId>org.apache.flink</groupId>
             <artifactId>flink-scala_2.12</artifactId>
             <version>${flink.version}</version>
-            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>org.apache.flink</groupId>
             <artifactId>flink-streaming-scala_2.12</artifactId>
             <version>${flink.version}</version>
-            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>org.apache.flink</groupId>
