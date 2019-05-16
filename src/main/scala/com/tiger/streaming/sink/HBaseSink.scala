@@ -1,4 +1,4 @@
-package com.tiger.sink
+package com.tiger.streaming.sink
 
 import org.apache.flink.configuration.Configuration
 import org.apache.flink.shaded.jackson2.com.fasterxml.jackson.databind.node.ObjectNode
