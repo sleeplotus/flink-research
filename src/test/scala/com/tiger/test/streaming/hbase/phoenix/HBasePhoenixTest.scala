@@ -66,6 +66,31 @@ class HBasePhoenixTest {
   }
 
   @Test
+  def phoenixDeleteTable(): Unit = {
+    var phoenix: PhoenixConnectionPool = null
+    var conn: Connection = null
+    var ps: PreparedStatement = null
+    try {
+      // Phoenix connection pool.
+      Class.forName(PHOENIX_JDBC_DRIVER)
+      phoenix = new PhoenixConnectionPool(JDBC_URL)
+      // Gets connection from phoenix connection pool.
+      conn = phoenix.getConnection
+      // Creates PreparedStatement.
+      ps = conn.prepareStatement("DELETE FROM audit_log.audit_log_2019_05")
+      val result = ps.executeUpdate()
+      println("Execution Result: " + result)
+      conn.commit()
+    } catch {
+      case e: Exception => System.out.println(e)
+    } finally {
+      if (ps != null) ps.close()
+      if (conn != null) conn.close()
+      if (phoenix != null) phoenix.close()
+    }
+  }
+
+  @Test
   def phoenixUpdateOrInsertTable(): Unit = {
     var phoenix: PhoenixConnectionPool = null
     var conn: Connection = null
