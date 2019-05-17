@@ -9,7 +9,7 @@ import org.junit.Test
 /**
   * @author 王澎
   */
-class HBasePhoenixTest {
+class HBasePhoenixTests {
 
   val JDBC_URL = "jdbc:phoenix:hb-bp1qsz6qn45y0vh2o-master1-001.hbase.rds.aliyuncs.com,hb-bp1qsz6qn45y0vh2o-master2-001.hbase.rds.aliyuncs.com,hb-bp1qsz6qn45y0vh2o-master3-001.hbase.rds.aliyuncs.com"
 
