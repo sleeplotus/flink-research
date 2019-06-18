@@ -5,8 +5,6 @@ import org.junit.Test
 
 /**
   * @author 王澎
-  * @date 2/23/2019
-  * @company VRV
   */
 class WordCountTests {
 

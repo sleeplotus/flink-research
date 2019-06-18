@@ -4,8 +4,6 @@ import org.apache.flink.api.scala._
 
 /**
   * @author 王澎
-  * @date 2/23/2019
-  * @company VRV
   */
 object WordCount {
   def main(args: Array[String]): Unit = {

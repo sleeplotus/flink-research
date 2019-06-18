@@ -7,7 +7,6 @@ import org.apache.flink.streaming.api.functions.sink.SinkFunction.Context
 
 /**
   * @author 王澎
-  * @date 5/16/2019
   */
 class HBaseSink extends RichSinkFunction[ObjectNode] {
 

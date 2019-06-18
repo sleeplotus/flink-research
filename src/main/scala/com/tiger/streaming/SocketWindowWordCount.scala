@@ -5,8 +5,6 @@ import org.apache.flink.streaming.api.windowing.time.Time
 
 /**
   * @author 王澎
-  * @date 2/23/2019
-  * @company VRV
   */
 object SocketWindowWordCount {
 
