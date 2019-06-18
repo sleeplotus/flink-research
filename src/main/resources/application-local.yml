@@ -1,0 +1,5 @@
+kafka:
+  bootstrapServers: 192.168.2.1:9092,192.168.2.2:9092,192.168.2.3:9092
+  audit:
+    groupId: test
+    topic: test

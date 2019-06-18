@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <!-- Defines properties. -->
+    <property name="log.path" value="/data/tiger/logs/flink-research"/>
+    <property name="log.filename.prefix" value="flink-research"/>
+
+    <!-- Defines console appender, namely standard output appender. -->
+    <appender name="Console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS}|[%thread]|%X{invokeNo}|%-5level|%logger{80}|-%msg%n</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+
+    <!-- In the Logback architecture, appender is the elements responsible for writing log statements.
+         All appender must implement the Appender interface.
+         Furthermore, each appender corresponds to a certain type of output or mode of sending data.
+         Here are some of the most helpful appender you can configure: -->
+    <!-- ConsoleAppender – writes messages to the system console
+         FileAppender – appends messages to a file
+         RollingFileAppender – extends the FileAppender with the ability to roll over log files
+         SMTPAppender – sends log messages in an email, by default only for ERROR messages
+         DBAppender – adds log events to a database
+         SiftingAppender – separates logs based on a runtime attribute -->
+    <appender name="InfoFileOut" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>${log.path}/${log.filename.prefix}.log</File>
+        <!-- Deciding what log information gets processed based on the log level is a good way to get started,
+             but at some point, that’s simply not enough.
+             Logback has solid support for additional filtering, beyond just the log level,
+             This is done with the help of filters –
+             which determine whether a log message should be displayed or not.
+             Simply put, a filter needs to implement the Filter class, with a single decide() method.
+             This method returns enumeration values of type FilterReply: DENY, NEUTRAL or ACCEPT.
+             The DENY value indicates the log event will not be processed,
+             while ACCEPT means the log event is processed,
+             skipping the evaluation of the remaining filters.
+             Finally, NEUTRAL allows the next filters in the chain to be evaluated.
+             If there are no more filters, the message is logged.
+             Here are the primary types of filters we have available: LevelFilter, ThresholdFilter and EvaluatorFilter.
+             The LevelFilter and ThresholdFilter are related to the log level,
+             with the difference that LevelFilter verifies if a log message is equal to a given level,
+             while the ThresholdFilter checks if log events are below a specified level. -->
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>ERROR</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>ACCEPT</onMismatch>
+        </filter>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <!-- Rollover daily and when the file reaches 100 MegaBytes. -->
+            <fileNamePattern>${log.path}/${log.filename.prefix}.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <!-- Each file should be at most 100MB, keep 30 days worth of history, but at most 20GB. -->
+            <maxFileSize>100MB</maxFileSize>
+            <maxHistory>30</maxHistory>
+            <totalSizeCap>20GB</totalSizeCap>
+        </rollingPolicy>
+        <encoder>
+            <!-- Layouts can only transform a message into String,
+                 while encoders are more flexible and can transform the message into a byte array,
+                 then write that to an OutputStream.
+                 This means encoders have more control over when and how bytes are written.
+                 As a result, starting with version 0.9.19, layouts have been deprecated,
+                 but they can still be used for a transition period.
+                 If you do still use layouts actively, Logback will print a warning message. -->
+            <pattern>
+                %d{yyyy-MM-dd HH:mm:ss.SSS}|[%thread]|%X{invokeNo}|%-5level|%logger{80}|-%msg%n
+            </pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+
+    <appender name="ErrorFileOut" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.path}/${log.filename.prefix}-error.log</file>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>ERROR</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <!-- Rollover daily and when the file reaches 100 MegaBytes. -->
+            <fileNamePattern>${log.path}/${log.filename.prefix}-error.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <!-- Each file should be at most 100MB, keep 30 days worth of history, but at most 20GB. -->
+            <maxFileSize>100MB</maxFileSize>
+            <maxHistory>30</maxHistory>
+            <totalSizeCap>20GB</totalSizeCap>
+        </rollingPolicy>
+        <encoder>
+            <pattern>
+                %d{yyyy-MM-dd HH:mm:ss.SSS}|[%thread]|%X{invokeNo}|%-5level|%logger{80}|-%msg%n
+            </pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+
+    <!-- LOG everything at INFO level. -->
+    <root level="INFO">
+        <appender-ref ref="Console"/>
+        <appender-ref ref="InfoFileOut"/>
+        <appender-ref ref="ErrorFileOut"/>
+    </root>
+
+    <!-- Define a parent logger configuration, LOG "com.tiger*" at info level.
+         The child logger will inherit the logger configuration of its closest ancestor.
+         Every child logger which name starts with "com.tiger" will apply this parent logger configuration. -->
+    <!-- Loggers are the third main component of Logback,
+         which developers can use to log messages at a certain level.
+         The library defines 5 log levels: TRACE, DEBUG, INFO, WARN, ERROR;
+         each of these has a corresponding logging method: trace(), debug(), info(), warn(), error().
+         If you don’t explicitly define a log level,
+         the logger will inherit the level of its closest ancestor;
+         in this case, the Info level of the root logger. -->
+    <!-- By default, a log message will be displayed by the logger which writes it,
+         as well as the ancestor loggers. And, since root is the ancestor of all loggers,
+         all messages will also be displayed by the root logger.
+         To disable this behavior, you need to set the additivity=false property on the logger element. -->
+    <logger name="com.tiger" level="info" additivity="false">
+        <appender-ref ref="Console"/>
+        <appender-ref ref="InfoFileOut"/>
+        <appender-ref ref="ErrorFileOut"/>
+    </logger>
+
+</configuration>
