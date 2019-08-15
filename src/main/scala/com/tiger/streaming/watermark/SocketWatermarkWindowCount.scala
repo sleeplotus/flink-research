@@ -7,7 +7,7 @@ import org.apache.flink.streaming.api.windowing.time.Time
 /**
  * @author 王澎
  */
-class SocketWatermarkWindowCount {
+object SocketWatermarkWindowCount {
 
   def main(args: Array[String]): Unit = {
     socketWatermarkWindowCount()
