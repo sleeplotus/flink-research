@@ -21,7 +21,9 @@ class CustomTimestampExtractor extends BoundedOutOfOrdernessTimestampExtractor[(
   }
 
   override def extractTimestamp(element: (String, Long), previousElementTimestamp: Long): Long = {
-    logger.info("extractTimestamp--element: {}--currentMaxTimestamp: {}--lastEmittedWatermark: {}", element, currentMaxTimestamp,
+    logger.info(
+      "extractTimestamp--element: {}--previousElementTimestamp: {}--currentMaxTimestamp: {}--lastEmittedWatermark: {}",
+      element, previousElementTimestamp, currentMaxTimestamp,
       lastEmittedWatermark)
     val timestamp = extractTimestamp(element)
     if (timestamp > currentMaxTimestamp) currentMaxTimestamp = timestamp
