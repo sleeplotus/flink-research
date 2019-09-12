@@ -5,15 +5,15 @@ package factory;
  */
 abstract class AbstractAnimalFactory {
 
-    abstract Animal getInstance();
+    String name;
 
-    abstract String getName();
+    abstract AbstractAnimal getInstance(String sex);
 
-    static Animal getAnimalInstanceByName(String name) {
-        Animal animal = null;
+    static AbstractAnimal getAnimalInstanceByName(String name, String sex) {
+        AbstractAnimal animal = null;
         for (AnimalEnum element : AnimalEnum.values()) {
             if (element.getName().equalsIgnoreCase(name)) {
-                animal = element.getAnimalFactory().getInstance();
+                animal = element.getAnimalFactory().getInstance(sex);
                 break;
             }
         }

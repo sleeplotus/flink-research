@@ -5,19 +5,12 @@ package factory;
  */
 public class CatFactory extends AbstractAnimalFactory {
 
-    private String name;
-
-    CatFactory(String name){
+    CatFactory(String name) {
         this.name = name;
     }
 
     @Override
-    public Animal getInstance() {
-        return new Cat(this.name);
-    }
-
-    @Override
-    public String getName() {
-        return this.name;
+    public AbstractAnimal getInstance(String sex) {
+        return new Cat(this.name, sex);
     }
 }

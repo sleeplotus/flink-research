@@ -20,6 +20,6 @@ public enum AnimalEnum {
 
     AnimalEnum(AbstractAnimalFactory animalFactory) {
         this.animalFactory = animalFactory;
-        this.name = animalFactory.getName();
+        this.name = animalFactory.name;
     }
 }

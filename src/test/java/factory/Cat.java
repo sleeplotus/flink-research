@@ -3,16 +3,10 @@ package factory;
 /**
  * @author Created by SleepLotus on 2019-09-12
  */
-public class Cat implements Animal {
+class Cat extends AbstractAnimal {
 
-    private String name;
-
-    Cat(String name) {
+    Cat(String name, String sex) {
         this.name = name;
-    }
-
-    @Override
-    public String getName() {
-        return this.name;
+        this.sex = sex;
     }
 }
