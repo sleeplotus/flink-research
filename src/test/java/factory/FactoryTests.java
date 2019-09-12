@@ -8,11 +8,11 @@ import org.junit.Test;
 public class FactoryTests {
     @Test
     public void factoryTests() {
-        System.out.println(AbstractAnimalFactory.getAnimalInstanceByName("Cat", "female").getName());
-        System.out.println(AbstractAnimalFactory.getAnimalInstanceByName("Cat", "female").getSex());
-        System.out.println(AbstractAnimalFactory.getAnimalInstanceByName("Dog", "male").getName());
-        System.out.println(AbstractAnimalFactory.getAnimalInstanceByName("Dog", "male").getSex());
-        System.out.println(AbstractAnimalFactory.getAnimalInstanceByName("Bird", "female").getName());
+        System.out.println(AbstractAnimalFactory.getAnimalInstanceByNameAndSex("Cat", "female").getName());
+        System.out.println(AbstractAnimalFactory.getAnimalInstanceByNameAndSex("Cat", "female").getSex());
+        System.out.println(AbstractAnimalFactory.getAnimalInstanceByNameAndSex("Dog", "male").getName());
+        System.out.println(AbstractAnimalFactory.getAnimalInstanceByNameAndSex("Dog", "male").getSex());
+        System.out.println(AbstractAnimalFactory.getAnimalInstanceByNameAndSex("Bird", "female").getName());
     }
 
 

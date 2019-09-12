@@ -9,7 +9,7 @@ abstract class AbstractAnimalFactory {
 
     abstract AbstractAnimal getInstance(String sex);
 
-    static AbstractAnimal getAnimalInstanceByName(String name, String sex) {
+    static AbstractAnimal getAnimalInstanceByNameAndSex(String name, String sex) {
         AbstractAnimal animal = null;
         for (AnimalEnum element : AnimalEnum.values()) {
             if (element.getName().equalsIgnoreCase(name)) {
