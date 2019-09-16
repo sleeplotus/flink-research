@@ -5,18 +5,16 @@ package factory;
  */
 abstract class AbstractAnimalFactory {
 
-    String name;
+    private String typeName;
 
-    abstract AbstractAnimal getInstance(String sex);
+    abstract AbstractAnimal getInstance(String name, String sex);
 
-    static AbstractAnimal getAnimalInstanceByNameAndSex(String name, String sex) {
-        AbstractAnimal animal = null;
-        for (AnimalEnum element : AnimalEnum.values()) {
-            if (element.getName().equalsIgnoreCase(name)) {
-                animal = element.getAnimalFactory().getInstance(sex);
-                break;
-            }
-        }
-        return animal;
+    String getTypeName() {
+        return typeName;
     }
+
+    void setTypeName(String typeName) {
+        this.typeName = typeName;
+    }
+
 }

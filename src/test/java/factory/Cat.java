@@ -5,8 +5,9 @@ package factory;
  */
 class Cat extends AbstractAnimal {
 
-    Cat(String name, String sex) {
-        this.name = name;
-        this.sex = sex;
+    Cat(String typeName, String name, String sex) {
+        this.setTypeName(typeName);
+        this.setName(name);
+        this.setSex(sex);
     }
 }

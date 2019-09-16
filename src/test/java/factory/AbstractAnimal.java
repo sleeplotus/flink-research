@@ -5,15 +5,33 @@ package factory;
  */
 abstract class AbstractAnimal {
 
-    String name;
+    private String typeName;
 
-    String sex;
+    private String name;
+
+    private String sex;
+
+    String getTypeName() {
+        return typeName;
+    }
+
+    void setTypeName(String typeName) {
+        this.typeName = typeName;
+    }
 
     String getName() {
-        return this.name;
+        return name;
+    }
+
+    void setName(String name) {
+        this.name = name;
     }
 
     String getSex() {
         return sex;
+    }
+
+    void setSex(String sex) {
+        this.sex = sex;
     }
 }
