@@ -1,20 +1,21 @@
 package factory;
 
 /**
+ * @param <IN>  Type of the input elements.
+ * @param <OUT> Type of the returned elements.
  * @author Created by SleepLotus on 2019-09-12
  */
-abstract class AbstractAnimalFactory {
+public abstract class AbstractAnimalFactory<IN, OUT> {
 
-    private String typeName;
+    private String type;
 
-    abstract AbstractAnimal getInstance(String name, String sex);
+    public abstract AbstractAnimal<IN, OUT> getInstance(String name, String sex);
 
-    String getTypeName() {
-        return typeName;
+    protected String getType() {
+        return type;
     }
 
-    void setTypeName(String typeName) {
-        this.typeName = typeName;
+    protected void setType(String type) {
+        this.type = type;
     }
-
 }
