@@ -8,9 +8,7 @@ import factory.AbstractAnimal;
 class Cat extends AbstractAnimal<String, Integer> {
 
     Cat(String type, String name, String sex) {
-        this.setType(type);
-        this.setName(name);
-        this.setSex(sex);
+        super(type, name, sex);
     }
 
     @Override

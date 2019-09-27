@@ -8,8 +8,8 @@ import factory.AbstractAnimalFactory;
  */
 public class DogFactory extends AbstractAnimalFactory<String, Integer> {
 
-    public DogFactory(String name) {
-        this.setType(name);
+    public DogFactory(String type) {
+        super(type);
     }
 
     @Override

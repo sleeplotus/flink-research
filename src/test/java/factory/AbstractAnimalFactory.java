@@ -9,13 +9,13 @@ public abstract class AbstractAnimalFactory<IN, OUT> {
 
     private String type;
 
+    public AbstractAnimalFactory(String type) {
+        this.type = type;
+    }
+
     public abstract AbstractAnimal<IN, OUT> getInstance(String name, String sex);
 
     protected String getType() {
         return type;
-    }
-
-    protected void setType(String type) {
-        this.type = type;
     }
 }

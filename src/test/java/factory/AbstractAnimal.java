@@ -13,29 +13,23 @@ public abstract class AbstractAnimal<IN, OUT> {
 
     private String sex;
 
+    public AbstractAnimal(String type, String name, String sex) {
+        this.type = type;
+        this.name = name;
+        this.sex = sex;
+    }
+
     public abstract OUT transform(IN in);
 
     public String getType() {
         return type;
     }
 
-    protected void setType(String type) {
-        this.type = type;
-    }
-
     public String getName() {
         return name;
     }
 
-    protected void setName(String name) {
-        this.name = name;
-    }
-
     public String getSex() {
         return sex;
-    }
-
-    protected void setSex(String sex) {
-        this.sex = sex;
     }
 }
