@@ -7,7 +7,10 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * @author Created by SleepLotus on 2019-09-12
+ * Factory tests.
+ *
+ * @author SleepLotus
+ * @since 2019-10-12
  */
 public class FactoryTests {
     @Before

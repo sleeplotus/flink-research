@@ -1,9 +1,12 @@
 package factory;
 
 /**
+ * Abstract animal.
+ *
  * @param <IN>  Type of the input elements.
  * @param <OUT> Type of the returned elements.
- * @author Created by SleepLotus on 2019-09-12
+ * @author SleepLotus
+ * @since 2019-10-12
  */
 public abstract class AbstractAnimal<IN, OUT> {
 

@@ -3,7 +3,10 @@ package factory.cat;
 import factory.AbstractAnimal;
 
 /**
- * @author Created by SleepLotus on 2019-09-12
+ * Cat.
+ *
+ * @author SleepLotus
+ * @since 2019-10-12
  */
 class Cat extends AbstractAnimal<String, Integer> {
 

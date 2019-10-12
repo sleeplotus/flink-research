@@ -4,7 +4,10 @@ import factory.cat.CatFactory;
 import factory.dog.DogFactory;
 
 /**
- * @author Created by SleepLotus on 2019-09-12
+ * Animal enum.
+ *
+ * @author SleepLotus
+ * @since 2019-10-12
  */
 public enum AnimalEnum {
 
@@ -15,7 +18,7 @@ public enum AnimalEnum {
     private final AbstractAnimalFactory<String, Integer> animalFactory;
 
     AnimalEnum(AbstractAnimalFactory<String, Integer> animalFactory) {
-        this.type = animalFactory.getType();
+        type = animalFactory.getType();
         this.animalFactory = animalFactory;
     }
 

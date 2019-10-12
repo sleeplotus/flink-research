@@ -3,7 +3,10 @@ package factory.dog;
 import factory.AbstractAnimal;
 
 /**
- * @author Created by SleepLotus on 2019-09-12
+ * Abstract animal.
+ *
+ * @author SleepLotus
+ * @since 2019-10-12
  */
 class Dog extends AbstractAnimal<String, Integer> {
 

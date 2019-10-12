@@ -4,7 +4,10 @@ import factory.AbstractAnimal;
 import factory.AbstractAnimalFactory;
 
 /**
- * @author Created by SleepLotus on 2019-09-12
+ * Cat factory.
+ *
+ * @author SleepLotus
+ * @since 2019-10-12
  */
 public class CatFactory extends AbstractAnimalFactory<String, Integer> {
 
@@ -14,6 +17,6 @@ public class CatFactory extends AbstractAnimalFactory<String, Integer> {
 
     @Override
     public AbstractAnimal<String, Integer> getInstance(String name, String sex) {
-        return new Cat(this.getType(), name, sex);
+        return new Cat(getType(), name, sex);
     }
 }
