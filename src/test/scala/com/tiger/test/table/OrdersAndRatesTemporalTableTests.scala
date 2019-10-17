@@ -16,8 +16,8 @@ import org.junit.Test
 import scala.collection.mutable
 
 /**
-  * @author 王澎
-  */
+ * @author 王澎
+ */
 class OrdersAndRatesTemporalTableTests {
 
   @Test
@@ -45,15 +45,15 @@ class OrdersAndRatesTemporalTableTests {
 
     // 进行订单表 event-time 的提取
     val orders = env
-                 .fromCollection(ordersData)
-                 .assignTimestampsAndWatermarks(new OrderTimestampExtractor[Long, String]())
-                 .toTable(tEnv, 'amount, 'currency, 'rowtime.rowtime)
+      .fromCollection(ordersData)
+      .assignTimestampsAndWatermarks(new OrderTimestampExtractor[Long, String]())
+      .toTable(tEnv, 'amount, 'currency, 'rowtime.rowtime)
 
     // 进行汇率表 event-time 的提取
     val ratesHistory = env
-                       .fromCollection(ratesHistoryData)
-                       .assignTimestampsAndWatermarks(new OrderTimestampExtractor[String, Long]())
-                       .toTable(tEnv, 'currency, 'rate, 'rowtime.rowtime)
+      .fromCollection(ratesHistoryData)
+      .assignTimestampsAndWatermarks(new OrderTimestampExtractor[String, Long]())
+      .toTable(tEnv, 'currency, 'rate, 'rowtime.rowtime)
 
     // 注册订单表和汇率表
     tEnv.registerTable("Orders", orders)
@@ -84,16 +84,16 @@ class OrdersAndRatesTemporalTableTests {
     // Defines table sink.
     val csvSink: CsvTableSink = new CsvTableSink(
       "out/log/audit/streaming/temporal_join_result_by_event_time", // output path
-      fieldDelim = ",", // optional: delimit files by '|'
-      numFiles = 1, // optional: write to a single file
-      writeMode = WriteMode.OVERWRITE) // optional: override existing files
+      ",", // optional: delimit files by '|'
+      1, // optional: write to a single file
+      WriteMode.OVERWRITE) // optional: override existing files
     // Registers table sink.
     tEnv.registerTableSink(
       "CsvOutputTable",
       // specify table schema
       Array[String]("currency", "amount", "rate", "order_rowtime", "rate_rowtime", "yen_amount"),
       Array[TypeInformation[_]](Types.STRING, Types.LONG, Types.LONG, Types.SQL_TIMESTAMP, Types.SQL_TIMESTAMP,
-                                Types.LONG),
+        Types.LONG),
       csvSink)
     // Insert table into table sink.
     tEnv.scan("TemporalJoinResult").insertInto("CsvOutputTable")
@@ -126,15 +126,15 @@ class OrdersAndRatesTemporalTableTests {
 
     // 进行订单表 event-time 的提取
     val orders = env
-                 .fromCollection(ordersData)
-                 .assignTimestampsAndWatermarks(new OrderDateExtractor[Long, String]())
-                 .toTable(tEnv, 'amount, 'currency, 'rowtime.rowtime)
+      .fromCollection(ordersData)
+      .assignTimestampsAndWatermarks(new OrderDateExtractor[Long, String]())
+      .toTable(tEnv, 'amount, 'currency, 'rowtime.rowtime)
 
     // 进行汇率表 event-time 的提取
     val ratesHistory = env
-                       .fromCollection(ratesHistoryData)
-                       .assignTimestampsAndWatermarks(new OrderDateExtractor[String, Long]())
-                       .toTable(tEnv, 'currency, 'rate, 'rowtime.rowtime)
+      .fromCollection(ratesHistoryData)
+      .assignTimestampsAndWatermarks(new OrderDateExtractor[String, Long]())
+      .toTable(tEnv, 'currency, 'rate, 'rowtime.rowtime)
 
     // 注册订单表和汇率表
     tEnv.registerTable("Orders", orders)
@@ -165,16 +165,16 @@ class OrdersAndRatesTemporalTableTests {
     // Defines table sink.
     val csvSink: CsvTableSink = new CsvTableSink(
       "out/log/audit/streaming/temporal_join_result_by_event_time", // output path
-      fieldDelim = ",", // optional: delimit files by '|'
-      numFiles = 1, // optional: write to a single file
-      writeMode = WriteMode.OVERWRITE) // optional: override existing files
+      ",", // optional: delimit files by '|'
+      1, // optional: write to a single file
+      WriteMode.OVERWRITE) // optional: override existing files
     // Registers table sink.
     tEnv.registerTableSink(
       "CsvOutputTable",
       // specify table schema
       Array[String]("currency", "amount", "rate", "order_rowtime", "rate_rowtime", "yen_amount"),
       Array[TypeInformation[_]](Types.STRING, Types.LONG, Types.LONG, Types.SQL_TIMESTAMP, Types.SQL_TIMESTAMP,
-                                Types.LONG),
+        Types.LONG),
       csvSink)
     // Insert table into table sink.
     tEnv.scan("TemporalJoinResult").insertInto("CsvOutputTable")
@@ -208,15 +208,15 @@ class OrdersAndRatesTemporalTableTests {
 
     // 订单表
     val orders = env
-                 .fromCollection(ordersData)
-                 .toTable(tEnv, 'amount, 'currency, 'process_time.proctime)
+      .fromCollection(ordersData)
+      .toTable(tEnv, 'amount, 'currency, 'process_time.proctime)
 
     // Defines table sink.
     val ordersCsvSink: CsvTableSink = new CsvTableSink(
       "out/log/audit/streaming/orders_by_process_time", // output path
-      fieldDelim = ",", // optional: delimit files by '|'
-      numFiles = 1, // optional: write to a single file
-      writeMode = WriteMode.OVERWRITE) // optional: override existing files
+      ",", // optional: delimit files by '|'
+      1, // optional: write to a single file
+      WriteMode.OVERWRITE) // optional: override existing files
     // Registers table sink.
     tEnv.registerTableSink(
       "OrdersCsvOutputTable",
@@ -229,8 +229,8 @@ class OrdersAndRatesTemporalTableTests {
 
     // 汇率表
     val ratesHistory = env
-                       .fromCollection(ratesHistoryData)
-                       .toTable(tEnv, 'currency, 'rate, 'process_time.proctime)
+      .fromCollection(ratesHistoryData)
+      .toTable(tEnv, 'currency, 'rate, 'process_time.proctime)
 
     // 注册订单表和汇率表
     tEnv.registerTable("Orders", orders)
@@ -260,16 +260,16 @@ class OrdersAndRatesTemporalTableTests {
     // Defines table sink.
     val csvSink: CsvTableSink = new CsvTableSink(
       "out/log/audit/streaming/temporal_join_result_by_process_time", // output path
-      fieldDelim = ",", // optional: delimit files by '|'
-      numFiles = 1, // optional: write to a single file
-      writeMode = WriteMode.OVERWRITE) // optional: override existing files
+      ",", // optional: delimit files by '|'
+      1, // optional: write to a single file
+      WriteMode.OVERWRITE) // optional: override existing files
     // Registers table sink.
     tEnv.registerTableSink(
       "CsvOutputTable",
       // specify table schema
       Array[String]("currency", "amount", "rate", "order_process_time", "rate_process_time", "yen_amount"),
       Array[TypeInformation[_]](Types.STRING, Types.LONG, Types.LONG, Types.SQL_TIMESTAMP, Types.SQL_TIMESTAMP,
-                                Types.LONG),
+        Types.LONG),
       csvSink)
     // Insert table into table sink.
     tEnv.scan("TemporalJoinResult").insertInto("CsvOutputTable")
@@ -329,15 +329,15 @@ class OrdersAndRatesTemporalTableTests {
 
     // 订单表
     val orders = env
-                 .fromCollection(ordersData)
-                 .toTable(tEnv, 'amount, 'currency, 'process_time.proctime)
+      .fromCollection(ordersData)
+      .toTable(tEnv, 'amount, 'currency, 'process_time.proctime)
 
     // Defines table sink.
     val ordersCsvSink: CsvTableSink = new CsvTableSink(
       "out/log/audit/streaming/orders_by_process_time", // output path
-      fieldDelim = ",", // optional: delimit files by '|'
-      numFiles = 1, // optional: write to a single file
-      writeMode = WriteMode.OVERWRITE) // optional: override existing files
+      ",", // optional: delimit files by '|'
+      1, // optional: write to a single file
+      WriteMode.OVERWRITE) // optional: override existing files
     // Registers table sink.
     tEnv.registerTableSink(
       "OrdersCsvOutputTable",
@@ -350,15 +350,15 @@ class OrdersAndRatesTemporalTableTests {
 
     // 汇率表
     val ratesHistory = env
-                       .fromCollection(ratesHistoryData)
-                       .toTable(tEnv, 'currency, 'rate, 'process_time.proctime)
+      .fromCollection(ratesHistoryData)
+      .toTable(tEnv, 'currency, 'rate, 'process_time.proctime)
 
     // Defines table sink.
     val ratesCsvSink: CsvTableSink = new CsvTableSink(
       "out/log/audit/streaming/rates_by_process_time", // output path
-      fieldDelim = ",", // optional: delimit files by '|'
-      numFiles = 1, // optional: write to a single file
-      writeMode = WriteMode.OVERWRITE) // optional: override existing files
+      ",", // optional: delimit files by '|'
+      1, // optional: write to a single file
+      WriteMode.OVERWRITE) // optional: override existing files
     // Registers table sink.
     tEnv.registerTableSink(
       "RatesCsvOutputTable",
@@ -397,16 +397,16 @@ class OrdersAndRatesTemporalTableTests {
     // Defines table sink.
     val csvSink: CsvTableSink = new CsvTableSink(
       "out/log/audit/streaming/temporal_join_result_by_process_time", // output path
-      fieldDelim = ",", // optional: delimit files by '|'
-      numFiles = 1, // optional: write to a single file
-      writeMode = WriteMode.OVERWRITE) // optional: override existing files
+      ",", // optional: delimit files by '|'
+      1, // optional: write to a single file
+      WriteMode.OVERWRITE) // optional: override existing files
     // Registers table sink.
     tEnv.registerTableSink(
       "CsvOutputTable",
       // specify table schema
       Array[String]("currency", "amount", "rate", "order_process_time", "rate_process_time", "yen_amount"),
       Array[TypeInformation[_]](Types.STRING, Types.LONG, Types.LONG, Types.SQL_TIMESTAMP, Types.SQL_TIMESTAMP,
-                                Types.LONG),
+        Types.LONG),
       csvSink)
     // Insert table into table sink.
     tEnv.scan("TemporalJoinResult").insertInto("CsvOutputTable")
@@ -439,13 +439,13 @@ class OrdersAndRatesTemporalTableTests {
 
     // 订单表
     val orders = env
-                 .fromCollection(ordersData).setParallelism(1)
-                 .toTable(tEnv, 'amount, 'currency, 'process_time.proctime)
+      .fromCollection(ordersData).setParallelism(1)
+      .toTable(tEnv, 'amount, 'currency, 'process_time.proctime)
 
     // 汇率表
     val ratesHistory = env
-                       .fromCollection(ratesHistoryData)
-                       .toTable(tEnv, 'currency, 'rate, 'process_time.proctime)
+      .fromCollection(ratesHistoryData)
+      .toTable(tEnv, 'currency, 'rate, 'process_time.proctime)
 
     // 注册订单表和汇率表
     tEnv.registerTable("Orders", orders)
@@ -475,16 +475,16 @@ class OrdersAndRatesTemporalTableTests {
     // Defines table sink.
     val csvSink: CsvTableSink = new CsvTableSink(
       "out/log/audit/streaming/temporal_join_result_by_process_time", // output path
-      fieldDelim = ",", // optional: delimit files by '|'
-      numFiles = 1, // optional: write to a single file
-      writeMode = WriteMode.OVERWRITE) // optional: override existing files
+      ",", // optional: delimit files by '|'
+      1, // optional: write to a single file
+      WriteMode.OVERWRITE) // optional: override existing files
     // Registers table sink.
     tEnv.registerTableSink(
       "CsvOutputTable",
       // specify table schema
       Array[String]("currency", "amount", "rate", "order_process_time", "rate_process_time", "yen_amount"),
       Array[TypeInformation[_]](Types.STRING, Types.LONG, Types.LONG, Types.SQL_TIMESTAMP, Types.SQL_TIMESTAMP,
-                                Types.LONG),
+        Types.LONG),
       csvSink)
     // Insert table into table sink.
     tEnv.scan("TemporalJoinResult").insertInto("CsvOutputTable")
