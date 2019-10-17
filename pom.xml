@@ -16,8 +16,8 @@
         <maven.compiler.target>${java.version}</maven.compiler.target>
 
         <maven.compiler.plugin.version>3.8.1</maven.compiler.plugin.version>
-        <scala.maven.plugin.version>4.2.0</scala.maven.plugin.version>
 
+        <scala.maven.plugin.version>4.2.0</scala.maven.plugin.version>
         <scala.version>2.12.8</scala.version>
         <scala.binary.version>2.12</scala.binary.version>
 
