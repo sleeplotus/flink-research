@@ -6,12 +6,20 @@
     <version>1.0</version>
     <inceptionYear>2018</inceptionYear>
     <properties>
-        <flink.version>1.9.0</flink.version>
-        <phoenix.version>5.1.0-HBase-2.0</phoenix.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+        <!-- Overwrite default values from parent pom.
+			 Intellij is (sometimes?) using those values to choose target language level
+			 and thus is changing back to java 1.6 on each maven re-import -->
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
+
         <scala.version>2.12.8</scala.version>
         <scala.binary.version>2.12</scala.binary.version>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <target.jvm>1.8</target.jvm>
+
+        <flink.version>1.9.0</flink.version>
+        <phoenix.version>5.1.0-HBase-2.0</phoenix.version>
     </properties>
 
     <repositories>
@@ -103,8 +111,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.0</version>
                 <configuration>
-                    <source>${target.jvm}</source>
-                    <target>${target.jvm}</target>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
                 </configuration>
             </plugin>
             <plugin>
