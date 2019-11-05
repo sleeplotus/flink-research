@@ -18,12 +18,38 @@
         <maven.compiler.plugin.version>3.8.1</maven.compiler.plugin.version>
 
         <scala.maven.plugin.version>4.2.0</scala.maven.plugin.version>
-        <scala.version>2.12.8</scala.version>
-        <scala.binary.version>2.12</scala.binary.version>
 
         <flink.version>1.9.0</flink.version>
         <phoenix.version>5.1.0-HBase-2.0</phoenix.version>
     </properties>
+
+    <!-- Activates profile by system parameters. -->
+    <profiles>
+        <profile>
+            <id>scala-2.12</id>
+            <activation>
+                <property>
+                    <name>!scala-2.11</name>
+                </property>
+            </activation>
+            <properties>
+                <scala.version>2.12.10</scala.version>
+                <scala.binary.version>2.12</scala.binary.version>
+            </properties>
+        </profile>
+        <profile>
+            <id>scala-2.11</id>
+            <activation>
+                <property>
+                    <name>scala-2.11</name>
+                </property>
+            </activation>
+            <properties>
+                <scala.version>2.11.12</scala.version>
+                <scala.binary.version>2.11</scala.binary.version>
+            </properties>
+        </profile>
+    </profiles>
 
     <repositories>
         <repository>
