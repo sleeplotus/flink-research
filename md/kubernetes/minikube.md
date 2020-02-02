@@ -5,5 +5,5 @@
 #### Start up a local Kubernetes cluster
 [Minicube Command Reference](https://github.com/kubernetes/minikube/issues/5860)
 ```
-minikube start --vm-driver=none --registry-mirror=https://registry.docker-cn.com --image-mirror-country=cn --image-repository=registry.cn-hangzhou.aliyuncs.com/google_containers
+minikube start --vm-driver=none --extra-config="kubelet.cgroup-driver=systemd" --extra-config="apiserver.authorization-mode=Node,RBAC" --registry-mirror=https://registry.docker-cn.com --image-mirror-country=cn --image-repository=registry.cn-hangzhou.aliyuncs.com/google_containers
 ```
