@@ -1,4 +1,4 @@
-### Minicube
+### Minikube
 [Minicube Documents](https://kubernetes.io/docs/tasks/tools/install-minikube/)
 #### Start up a local Kubernetes cluster
 [Minicube Command Reference](https://github.com/kubernetes/minikube/issues/5860)
