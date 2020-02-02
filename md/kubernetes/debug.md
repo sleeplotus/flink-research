@@ -6,3 +6,7 @@ For posterity, the solution to this problem was to delete the
 .minikube
 directory in the user's home directory, and then try again. Often fixes strange minikube problems.
 ```
+### [Q2](https://github.com/kubernetes/minikube/issues/2863)
+```
+
+```
