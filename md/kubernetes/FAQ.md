@@ -39,3 +39,5 @@ I was able to get it to work with this. The --bootstrapper option seems to be re
 
 minikube start --vm-driver=none --bootstrapper=kubeadm --extra-config=apiserver.authorization-mode=RBAC
 ```
+- [Solution](https://dockerquestions.com/2019/04/22/minikube-running-in-docker-mode-returns-503-when-launching-the-dashboard/)
+- [Solution](https://zhuanlan.zhihu.com/p/47185808)
