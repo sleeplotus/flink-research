@@ -8,6 +8,7 @@ failed to run Kubelet: failed to create kubelet: misconfiguration: kubelet cgrou
 ```
 --extra-config="kubelet.cgroup-driver=systemd"
 ```
+- [Solution](https://www.cnblogs.com/hongdada/p/9771857.html)
 #### Q2
 - Question
 ```
