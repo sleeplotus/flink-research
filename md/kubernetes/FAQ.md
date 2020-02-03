@@ -1,19 +1,19 @@
 ### Minikube
 #### Q1
-- [Question](https://github.com/kubernetes/minikube/issues/4172)
+- Question
 ```
 failed to run Kubelet: failed to create kubelet: misconfiguration: kubelet cgroup driver: "cgroupfs" is different from docker cgroup driver: "systemd"
 ```
-- Solution
+- [Solution](https://github.com/kubernetes/minikube/issues/4172)
 ```
 --extra-config="kubelet.cgroup-driver=systemd"
 ```
 #### Q2
-- [Question](https://github.com/kubernetes/minikube/issues/6061)
+- Question
 ```
 setting "apiserver.authorization-mode=RBAC" : writing Crisocket information: timed out waiting for the condition
 ```
-- Solution
+- [Solution](https://github.com/kubernetes/minikube/issues/6061)
 ```
 --extra-config="apiserver.authorization-mode=RBAC"
 ```
@@ -27,4 +27,15 @@ Error loading config file "/var/lib/minikube/kubeconfig": open /var/lib/minikube
 # Set SELinux in permissive mode (effectively disabling it)
 setenforce 0
 sed -i 's/^SELINUX=enforcing$/SELINUX=permissive/' /etc/selinux/config
+```
+#### Q5
+- Quesion
+```
+minikube dashbaordX http://127.0.0.1:37619/api/v1/namespaces/kubernetes-dashboard/services/http:kubernetes-dashboard:/proxy/ is not accessible: Temporary Error: unexpected response code: 503
+```
+- [Solution](https://gist.github.com/F21/08bfc2e3592bed1e931ec40b8d2ab6f5)
+```
+I was able to get it to work with this. The --bootstrapper option seems to be required when you are running it with --vm-driver=none
+
+minikube start --vm-driver=none --bootstrapper=kubeadm --extra-config=apiserver.authorization-mode=RBAC
 ```
