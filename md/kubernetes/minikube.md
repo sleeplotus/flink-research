@@ -16,5 +16,5 @@
 [Minicube Command Reference](https://github.com/kubernetes/minikube/issues/5860)
 - vm-driver=none
 ```
-minikube start --vm-driver=none --extra-config="kubelet.cgroup-driver=systemd" --extra-config="apiserver.authorization-mode=Node,RBAC" -iso-url=https://kubernetes.oss-cn-hangzhou.aliyuncs.com/minikube/iso/minikube-v1.6.2.iso --registry-mirror=https://registry.docker-cn.com --image-mirror-country=cn --image-repository=registry.cn-hangzhou.aliyuncs.com/google_containers
+minikube start --vm-driver=none --extra-config="kubelet.cgroup-driver=systemd" --extra-config="apiserver.authorization-mode=Node,RBAC" --iso-url=https://kubernetes.oss-cn-hangzhou.aliyuncs.com/minikube/iso/minikube-v1.6.2.iso --registry-mirror=https://registry.docker-cn.com --image-mirror-country=cn --image-repository=registry.cn-hangzhou.aliyuncs.com/google_containers
 ```
