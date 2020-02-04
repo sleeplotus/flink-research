@@ -34,11 +34,11 @@ curl http://your_api_server_ip:8001/api/v1/namespaces/kube-system/services/http:
 
 minikube addons list
 ```
-- Create Deployment
+- Run a particular image on the cluster
 ```
 kubectl run hello --image=docker.io/mongo
 ```
-- Expose Service
+- Take a replication controller, service, deployment or pod and expose it as a new Kubernetes Service
 ```
 kubectl expose deployment hello --port=80 --target-port=8000
 ```
