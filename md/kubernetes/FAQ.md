@@ -30,7 +30,7 @@ setenforce 0
 sed -i 's/^SELINUX=enforcing$/SELINUX=permissive/' /etc/selinux/config
 ```
 #### Q5
-- Quesion
+- Question
 ```
 minikube dashbaordX http://127.0.0.1:37619/api/v1/namespaces/kubernetes-dashboard/services/http:kubernetes-dashboard:/proxy/ is not accessible: Temporary Error: unexpected response code: 503
 ```
@@ -42,3 +42,18 @@ minikube start --vm-driver=none --bootstrapper=kubeadm --extra-config=apiserver.
 ```
 - [Solution](https://dockerquestions.com/2019/04/22/minikube-running-in-docker-mode-returns-503-when-launching-the-dashboard/)
 - [Solution](https://zhuanlan.zhihu.com/p/47185808)
+#### Q5
+- Question
+```
+how to access local kubernetes minikube dashboard remotely
+```
+- [Solution](https://stackoverflow.com/questions/47173463/how-to-access-local-kubernetes-minikube-dashboard-remotely)
+```
+1. Start a proxy using @Jeff's script, as default it will open a proxy on '0.0.0.0:8001'.
+
+kubectl proxy --address='0.0.0.0' --disable-filter=true
+
+2. Visit the dashboard via the link below:
+
+curl http://your_api_server_ip:8001//api/v1/namespaces/kubernetes-dashboard/services/http:kubernetes-dashboard:/proxy
+```

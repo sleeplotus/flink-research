@@ -16,15 +16,21 @@
 [Turotial](https://blog.csdn.net/qq_26819733/article/details/83591891)
 ##### Start up a local Kubernetes cluster
 [Minicube Command Reference](https://github.com/kubernetes/minikube/issues/5860)
-- vm-driver=none
+- Start Up Minikube
 ```
 minikube start --vm-driver=none --bootstrapper=kubeadm --extra-config="kubelet.cgroup-driver=systemd" --extra-config="apiserver.authorization-mode=Node,RBAC" --iso-url=https://kubernetes.oss-cn-hangzhou.aliyuncs.com/minikube/iso/minikube-v1.6.2.iso --registry-mirror=https://registry.docker-cn.com --image-mirror-country=cn --image-repository=registry.cn-hangzhou.aliyuncs.com/google_containers
 
 minikube status
 
 kubectl create clusterrolebinding add-on-cluster-admin --clusterrole=cluster-admin --serviceaccount=kube-system:default
-
+```
+- Start Up Dashboard
+```
 minikube dashboard &
+
+kubectl proxy --address='0.0.0.0' --disable-filter=true
+
+curl http://your_api_server_ip:8001/api/v1/namespaces/kube-system/services/http:kubernetes-dashboard:/proxy/
 
 minikube addons list
 ```
