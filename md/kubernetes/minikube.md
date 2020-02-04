@@ -35,7 +35,7 @@ curl http://your_api_server_ip:8001/api/v1/namespaces/kube-system/services/http:
 minikube addons list
 ```
 - Run a particular image on the cluster
-```
+```kubectl create clusterrolebinding tiller --clusterrole cluster-admin --serviceaccount=kube-system:tiller
 kubectl run hello --image=docker.io/mongo
 ```
 - Take a replication controller, service, deployment or pod and expose it as a new Kubernetes Service
