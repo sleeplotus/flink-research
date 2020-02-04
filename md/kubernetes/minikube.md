@@ -34,3 +34,11 @@ curl http://your_api_server_ip:8001/api/v1/namespaces/kube-system/services/http:
 
 minikube addons list
 ```
+- Create Deployment
+```
+kubectl run hello --image=docker.io/mongo
+```
+- Expose Service
+```
+kubectl expose deployment hello --port=80 --target-port=8000
+```
