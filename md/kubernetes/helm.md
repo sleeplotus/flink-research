@@ -46,3 +46,7 @@ kubectl create clusterrolebinding tiller-cluster-rule --clusterrole=cluster-admi
     ```
     helm init -i gcr.io/kubernetes-helm/tiller:v2.9.0
     ```
+- 为应用程序设置serviceaccount
+```
+kubectl patch deploy --namespace kube-system tiller-deploy -p '{"spec":{"template":{"spec":{"serviceAccount":"tiller"}}}}'
+```
