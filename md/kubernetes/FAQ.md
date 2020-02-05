@@ -69,3 +69,14 @@ socat not found
 ```
 yum install -y socat
 ```
+
+#### Q7
+- Question
+```
+waiting for a volume to be created, either by external provisioner "k8s.io/minikube-hostpath" or manually created by system administrator
+```
+- [Solution](https://github.com/kubernetes/minikube/issues/3129)
+```
+minikube addons enable storage-provisioner
+kubectl get sc
+```
