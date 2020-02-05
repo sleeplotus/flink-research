@@ -8,9 +8,9 @@
 
 #### Tutorial
 ##### Install Helm
-- 解压helm-v2.16.1-linux-amd64.tar.gz
+- 解压helm-v2.9.1-linux-amd64.tar.gz
 ```
-tar -zxvf helm-v2.16.1-linux-amd64.tar.gz
+tar -zxvf helm-v2.9.1-linux-amd64.tar.gz
 ```
 - 移动到/usr/local/bin目录下
 ```
