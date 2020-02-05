@@ -40,11 +40,13 @@ kubectl create clusterrolebinding tiller-cluster-rule --clusterrole=cluster-admi
     - 方法1
     ```
     helm init
+    helm init --service-account tiller
     helm init --upgrade
     ```
     - 方法2
     ```
     helm init -i gcr.io/kubernetes-helm/tiller:v2.9.0
+    helm init --service-account tiller -i gcr.io/kubernetes-helm/tiller:v2.9.0
     ```
 - 为应用程序设置serviceaccount
 ```
