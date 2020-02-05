@@ -9,6 +9,7 @@ failed to run Kubelet: failed to create kubelet: misconfiguration: kubelet cgrou
 --extra-config="kubelet.cgroup-driver=systemd"
 ```
 - [Solution](https://www.cnblogs.com/hongdada/p/9771857.html)
+
 #### Q2
 - Question
 ```
@@ -42,7 +43,8 @@ minikube start --vm-driver=none --bootstrapper=kubeadm --extra-config=apiserver.
 ```
 - [Solution](https://dockerquestions.com/2019/04/22/minikube-running-in-docker-mode-returns-503-when-launching-the-dashboard/)
 - [Solution](https://zhuanlan.zhihu.com/p/47185808)
-#### Q5
+
+#### Q6
 - Question
 ```
 how to access local kubernetes minikube dashboard remotely
@@ -56,4 +58,14 @@ kubectl proxy --address='0.0.0.0' --disable-filter=true
 2. Visit the dashboard via the link below:
 
 curl http://your_api_server_ip:8001//api/v1/namespaces/kubernetes-dashboard/services/http:kubernetes-dashboard:/proxy
+```
+
+#### Q7
+- Question
+```
+socat not found
+```
+- [Solution](https://github.com/helm/helm/issues/1371）
+```
+yum install -y socat
 ```
